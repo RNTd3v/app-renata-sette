@@ -1,0 +1,12 @@
+type Work {
+  id: ID!
+  categoryID: String!
+  namePT: String!
+  nameEN: String!
+  descriptionPT: String
+  descriptionEN: String
+  date: String
+  picture: String!
+  movie: String
+  icon: String
+}

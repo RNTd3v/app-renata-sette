@@ -1,0 +1,15 @@
+type Media {
+  id: ID!
+  workID: String
+  titlePT: String!
+  titleEN: String!
+  url: String!
+}
+
+type Slider {
+  slider: [Media!]!
+}
+
+type SocialMedia {
+  socialMedia: [Media!]!
+}

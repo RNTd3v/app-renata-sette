@@ -1,0 +1,7 @@
+type Bio {
+  id: ID!
+  titlePT: String!
+  titleEN: String!
+  contentPT: String
+  contentEN: String
+}
