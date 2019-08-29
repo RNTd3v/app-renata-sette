@@ -3,4 +3,16 @@ type Category {
   namePT: String!
   nameEN: String!
   icon: String
+  created: String
+}
+
+type Query {
+  categories: [Category!]!
+  category(id: ID!): Category
+}
+
+type Mutation {
+  createCategory(namePT: String!, nameEN: String!, icon: String): Category
+  updateCategory(id: String!, namePT: String!, nameEN: String!, icon: String): Category
+  deleteCategory(id: String!): Category
 }

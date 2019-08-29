@@ -10,3 +10,35 @@ type Work {
   movie: String
   icon: String
 }
+
+type Query {
+  works: [Work!]!
+  work(id: ID!): Work
+}
+
+type Mutation {
+  createWork(
+    categoryID: String!
+    namePT: String!
+    nameEN: String!
+    descriptionPT: String
+    descriptionEN: String
+    date: String
+    picture: String!
+    movie: String
+    icon: String
+  ): Work
+  updateWork(
+    id: String!
+    categoryID: String!
+    namePT: String!
+    nameEN: String!
+    descriptionPT: String
+    descriptionEN: String
+    date: String
+    picture: String!
+    movie: String
+    icon: String
+  ): Work
+  deleteWork(id: String!): Work
+}
