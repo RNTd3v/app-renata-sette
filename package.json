@@ -15,12 +15,15 @@
   "dependencies": {
     "bcrypt": "^3.0.6",
     "dotenv": "^8.1.0",
+    "googleapis": "39",
     "graphql-shield": "^6.0.5",
     "graphql-yoga": "^1.18.2",
     "jsonwebtoken": "^8.5.1",
     "merge-graphql-schemas": "^1.7.0",
     "mongoose": "^5.6.10",
-    "mongoose-timestamp2": "^0.1.2"
+    "mongoose-timestamp2": "^0.1.2",
+    "multer": "^1.4.2",
+    "shortid": "^2.2.14"
   },
   "devDependencies": {
     "@types/mongoose": "^5.5.13",
