@@ -1,6 +1,8 @@
 import { Schema, model, Document } from 'mongoose'
 
 interface CategoryInterface extends Document {
+  codePT: string;
+  codeEN: string;
   namePT: string;
   nameEN: string;
   icon?: string;
@@ -8,12 +10,16 @@ interface CategoryInterface extends Document {
 
 export interface CategoryModel {
   id?: string;
+  codePT?: string;
+  codeEN?: string;
   namePT: string;
   nameEN: string;
   icon?: string;
 }
 
 const CategorySchema = new Schema({
+  codePT: String,
+  codeEN: String,
   namePT: {
     type: String,
     required: true

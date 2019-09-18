@@ -1,5 +1,7 @@
 type Category {
   id: ID!
+  codePT: String
+  codeEN: String
   namePT: String!
   nameEN: String!
   icon: String
@@ -13,6 +15,11 @@ type Query {
 
 type Mutation {
   createCategory(namePT: String!, nameEN: String!, icon: String): Category
-  updateCategory(id: String!, namePT: String!, nameEN: String!, icon: String): Category
+  updateCategory(
+    id: String!
+    namePT: String!
+    nameEN: String!
+    icon: String
+  ): Category
   deleteCategory(id: String!): Category
 }

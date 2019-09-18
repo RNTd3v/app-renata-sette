@@ -9,7 +9,9 @@ import Work from './schemas/Work'
 
 mongoose.Promise = global.Promise
 
-export const startDB = ({ user, pwd, url, db }): any => mongoose.connect(`mongodb://${user}:${pwd}@${url}/${db}?authSource=admin`, {
+// mongodb+srv://renatasetteapp:<password>@cluster0-f2n8w.mongodb.net/test?retryWrites=true&w=majority
+
+export const startDB = ({ user, pwd, url, db }): any => mongoose.connect(`mongodb+srv://${user}:${pwd}@${url}/${db}?retryWrites=true&w=majority`, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false

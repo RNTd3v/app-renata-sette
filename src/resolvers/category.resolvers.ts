@@ -1,4 +1,5 @@
 import { CategoryModel } from '../db/schemas/Category'
+import ReplaceSpecialChars from '../utils/replaceSpecialChars'
 
 export default {
   Query: {
@@ -11,6 +12,8 @@ export default {
       const newCategory = new models.Category({
         namePT,
         nameEN,
+        codePT: ReplaceSpecialChars(namePT),
+        codeEN: ReplaceSpecialChars(nameEN),
         icon
       })
 
@@ -35,6 +38,8 @@ export default {
       const newCategory: CategoryModel = {
         namePT,
         nameEN,
+        codePT: ReplaceSpecialChars(namePT),
+        codeEN: ReplaceSpecialChars(nameEN),
         icon
       }
 

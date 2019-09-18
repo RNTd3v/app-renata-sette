@@ -12,7 +12,7 @@ const db = startDB({
   user: process.env.DB_USER,
   pwd: process.env.DB_PASSWORD,
   db: process.env.DB_DATABASE,
-  url: `${process.env.DB_HOST}:${process.env.DB_PORT}`
+  url: process.env.DB_HOST
 })
 
 function getClaims (req): any {
