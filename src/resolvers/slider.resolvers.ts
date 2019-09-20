@@ -5,12 +5,15 @@ export default {
     slider: (_, args, { models }): Promise<SliderModel[]> => models.Slider.find()
   },
   Mutation: {
-    createSlider: async (_, { titlePT, titleEN, url }, { models }) : Promise<SliderModel> => {
+    createSlider: async (_, { titlePT, titleEN, picture, linkPT,
+      linkEN }, { models }) : Promise<SliderModel> => {
       // create a new slider
       const newSlider = new models.Slider({
         titlePT,
         titleEN,
-        url
+        picture, 
+        linkPT,
+        linkEN
       })
 
       let sliderRegistered
@@ -24,7 +27,8 @@ export default {
 
       return sliderRegistered
     },
-    updateSlider: async (_, { id, titlePT, titleEN, url }, { models }): Promise<SliderModel> => {
+    updateSlider: async (_, { id, titlePT, titleEN, picture, linkPT,
+      linkEN }, { models }): Promise<SliderModel> => {
       const slider = await models.Slider.findById(id)
 
       if (!slider) {
@@ -34,14 +38,19 @@ export default {
       const newSlider: SliderModel = {
         titlePT,
         titleEN,
-        url
+        picture, 
+        linkPT,
+        linkEN
       }
 
       await models.Slider.updateOne({ _id: id }, newSlider)
 
-      newSlider.id = id
+      const updateSlider = {
+        ... newSlider,
+        id
+      }
 
-      return newSlider
+      return updateSlider
     },
     deleteSlider: async (_, { id }, { models }) : Promise<SliderModel> => {
       const slider = await models.Slider.findById(id)

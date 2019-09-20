@@ -3,14 +3,17 @@ import { Schema, model, Document } from 'mongoose'
 interface SliderInterface extends Document {
   titlePT: string;
   titleEN: string;
-  url: string;
+  linkPT: string;
+  linkEN: string;
+  picture: string;
 }
 
 export interface SliderModel {
-  id?: string;
   titlePT: string;
   titleEN: string;
-  url: string;
+  linkPT: string;
+  linkEN: string;
+  picture: string;
 }
 
 const SliderSchema = new Schema({
@@ -22,10 +25,12 @@ const SliderSchema = new Schema({
     type: String,
     required: true
   },
-  url: {
+  picture: {
     type: String,
     required: true
-  }
+  },
+  linkPT: String,
+  linkEN: String
 })
 
 export default model<SliderInterface>('Slider', SliderSchema)

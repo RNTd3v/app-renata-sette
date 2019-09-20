@@ -9,18 +9,30 @@ type Media {
 type Query {
   medias: [Media!]!
   media(id: ID!): Media
-  slider: [Media!]!
   socialMedia: [Media!]!
 }
 
 type Mutation {
-  createMedia(workID: String!, titlePT: String!, titleEN: String!, url: String!): Media
-  createSlider(titlePT: String!, titleEN: String!, url: String!): Media
+  createMedia(
+    workID: String!
+    titlePT: String!
+    titleEN: String!
+    url: String!
+  ): Media
   createSocialMedia(titlePT: String!, titleEN: String!, url: String!): Media
-  updateMedia(id: String!, workID: String!, titlePT: String!, titleEN: String!, url: String!): Media
-  updateSlider(id: String!, titlePT: String!, titleEN: String!, url: String!): Media
-  updateSocialMedia(id: String!, titlePT: String!, titleEN: String!, url: String!): Media
+  updateMedia(
+    id: String!
+    workID: String!
+    titlePT: String!
+    titleEN: String!
+    url: String!
+  ): Media
+  updateSocialMedia(
+    id: String!
+    titlePT: String!
+    titleEN: String!
+    url: String!
+  ): Media
   deleteMedia(id: String!): Media
-  deleteSlider(id: String!): Media
   deleteSocialMedia(id: String!): Media
 }

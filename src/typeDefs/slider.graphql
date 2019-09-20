@@ -1,0 +1,32 @@
+type Slider {
+  id: ID!
+  linkPT: String
+  linkEN: String
+  titlePT: String!
+  titleEN: String!
+  picture: String
+  created: String
+}
+
+type Query {
+  slider: [Slider!]!
+}
+
+type Mutation {
+  createSlider(
+    linkPT: String
+    linkEN: String
+    titlePT: String!
+    titleEN: String!
+    picture: String
+  ): Slider
+  updateSlider(
+    id: ID!
+    linkPT: String
+    linkEN: String
+    titlePT: String!
+    titleEN: String!
+    picture: String
+  ): Slider
+  deleteSlider(id: String!): Slider
+}
