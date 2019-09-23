@@ -12,7 +12,9 @@ const db = startDB({
   user: process.env.DB_USER,
   pwd: process.env.DB_PASSWORD,
   db: process.env.DB_DATABASE,
-  url: process.env.DB_HOST
+  url: process.env.DB_HOST,
+  dbInitial: process.env.IS_WORK ? 'mongodb' : 'mongodb+srv',
+  dbFinal: process.env.IS_WORK ? 'authSource=admin' : 'retryWrites=true&w=majority'
 })
 
 function getClaims (req): any {

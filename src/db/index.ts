@@ -13,7 +13,7 @@ mongoose.Promise = global.Promise
 
 // mongodb+srv://renatasetteapp:<password>@cluster0-f2n8w.mongodb.net/test?retryWrites=true&w=majority
 
-export const startDB = ({ user, pwd, url, db }): any => mongoose.connect(`mongodb+srv://${user}:${pwd}@${url}/${db}?retryWrites=true&w=majority`, {
+export const startDB = ({ user, pwd, url, db, dbInitial, dbFinal }): any => mongoose.connect(`${dbInitial}://${user}:${pwd}@${url}/${db}?${dbFinal}`, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false
