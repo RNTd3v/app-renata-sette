@@ -4,6 +4,7 @@ interface MediaInterface extends Document {
   workID: string;
   titlePT: string;
   titleEN: string;
+  isMovie: boolean;
   url: string;
 }
 
@@ -12,6 +13,7 @@ export interface MediaModel {
   workID: string;
   titlePT: string;
   titleEN: string;
+  isMovie: boolean;
   url: string;
 }
 
@@ -28,6 +30,7 @@ const MediaSchema = new Schema({
     type: String,
     required: true
   },
+  isMovie: Boolean,
   url: {
     type: String,
     required: true

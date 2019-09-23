@@ -1,30 +1,29 @@
 import { Schema, model, Document } from 'mongoose'
 
 interface SocialMediaInterface extends Document {
-  titlePT: string;
-  titleEN: string;
+  name: string;
+  icon: string;
   url: string;
 }
 
 export interface SocialMediaModel {
   id?: string;
-  titlePT: string;
-  titleEN: string;
+  name: string;
+  icon: string;
   url: string;
 }
 
 const SocialMediaSchema = new Schema({
-  titlePT: {
+  name: {
     type: String,
     required: true
   },
-  titleEN: {
+  icon: {
     type: String,
     required: true
   },
   url: {
-    type: String,
-    required: true
+    type: String
   }
 })
 

@@ -5,11 +5,11 @@ export default {
     socialMedia: (_, args, { models }): Promise<SocialMediaModel[]> => models.SocialMedia.find()
   },
   Mutation: {
-    createSocialMedia: async (_, { titlePT, titleEN, url }, { models }) : Promise<SocialMediaModel> => {
+    createSocialMedia: async (_, { name, icon, url }, { models }) : Promise<SocialMediaModel> => {
       // create a new socialMedia
       const newSocialMedia = new models.SocialMedia({
-        titlePT,
-        titleEN,
+        name,
+        icon,
         url
       })
 
@@ -24,7 +24,9 @@ export default {
 
       return socialMediaRegistered
     },
-    updateSocialMedia: async (_, { id, titlePT, titleEN, url }, { models }): Promise<SocialMediaModel> => {
+    updateSocialMedia: async (_, { id, name,
+      icon,
+      url }, { models }): Promise<SocialMediaModel> => {
       const socialMedia = await models.SocialMedia.findById(id)
 
       if (!socialMedia) {
@@ -32,8 +34,8 @@ export default {
       }
 
       const newSocialMedia: SocialMediaModel = {
-        titlePT,
-        titleEN,
+        name,
+        icon,
         url
       }
 

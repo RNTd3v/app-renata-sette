@@ -3,13 +3,14 @@ type Media {
   workID: String
   titlePT: String!
   titleEN: String!
+  isMovie: Boolean
   url: String!
 }
 
 type Query {
   medias: [Media!]!
+  mediasByWork(workID: ID!): [Media!]!
   media(id: ID!): Media
-  socialMedia: [Media!]!
 }
 
 type Mutation {
@@ -17,22 +18,16 @@ type Mutation {
     workID: String!
     titlePT: String!
     titleEN: String!
+    isMovie: Boolean
     url: String!
   ): Media
-  createSocialMedia(titlePT: String!, titleEN: String!, url: String!): Media
   updateMedia(
     id: String!
     workID: String!
     titlePT: String!
     titleEN: String!
-    url: String!
-  ): Media
-  updateSocialMedia(
-    id: String!
-    titlePT: String!
-    titleEN: String!
+    isMovie: Boolean
     url: String!
   ): Media
   deleteMedia(id: String!): Media
-  deleteSocialMedia(id: String!): Media
 }

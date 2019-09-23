@@ -1,0 +1,21 @@
+type SocialMedia {
+  id: ID!
+  name: String!
+  icon: String!
+  url: String!
+}
+
+type Query {
+  socialMedia: [SocialMedia!]!
+}
+
+type Mutation {
+  createSocialMedia(name: String!, icon: String!, url: String!): SocialMedia
+  updateSocialMedia(
+    id: String!
+    name: String!
+    icon: String!
+    url: String!
+  ): SocialMedia
+  deleteSocialMedia(id: String!): SocialMedia
+}

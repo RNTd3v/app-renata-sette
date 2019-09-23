@@ -10,6 +10,8 @@ type Category {
 
 type Query {
   categories: [Category!]!
+  categoryByCodePT(codePT: String!): Category
+  categoryByCodeEN(codeEN: String!): Category
   category(id: ID!): Category
 }
 

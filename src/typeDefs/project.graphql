@@ -1,6 +1,5 @@
-type Work {
+type Project {
   id: ID!
-  categoryID: String!
   namePT: String!
   nameEN: String!
   codePT: String
@@ -14,16 +13,14 @@ type Work {
 }
 
 type Query {
-  works: [Work!]!
-  worksByCategory(categoryID: ID!): [Work!]!
-  workByCodePT(codePT: String!): Work
-  workByCodeEN(codeEN: String!): Work
-  work(id: ID!): Work
+  projects: [Project!]!
+  projectByCodePT(codePT: String!): Project
+  projectByCodeEN(codeEN: String!): Project
+  project(id: ID!): Project
 }
 
 type Mutation {
-  createWork(
-    categoryID: String!
+  createProject(
     namePT: String!
     nameEN: String!
     codePT: String
@@ -34,10 +31,9 @@ type Mutation {
     picture: String!
     movie: String
     icon: String
-  ): Work
-  updateWork(
+  ): Project
+  updateProject(
     id: String!
-    categoryID: String!
     namePT: String!
     nameEN: String!
     codePT: String
@@ -48,6 +44,6 @@ type Mutation {
     picture: String!
     movie: String
     icon: String
-  ): Work
-  deleteWork(id: String!): Work
+  ): Project
+  deleteProject(id: String!): Project
 }

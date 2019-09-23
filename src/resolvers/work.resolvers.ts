@@ -1,8 +1,12 @@
 import { WorkModel } from '../db/schemas/Work'
+import ReplaceSpecialChars from '../utils/replaceSpecialChars'
 
 export default {
   Query: {
     works: (_, args, { models }): Promise<WorkModel[]> => models.Work.find(),
+    worksByCategory: (_, {categoryID}, { models }): Promise<WorkModel[]> => models.Work.find({categoryID}),
+    workByCodePT: (_, { codePT }, { models }): Promise<WorkModel> => models.Work.findOne({codePT}),
+    workByCodeEN: (_, { codeEN }, { models }): Promise<WorkModel> => models.Work.findOne({codeEN}),
     work: (_, { id }, { models }): Promise<WorkModel> =>
       models.Work.findById(id)
   },
@@ -27,6 +31,8 @@ export default {
         categoryID,
         namePT,
         nameEN,
+        codePT: ReplaceSpecialChars(namePT),
+        codeEN: ReplaceSpecialChars(nameEN),
         descriptionPT,
         descriptionEN,
         date,
@@ -72,6 +78,8 @@ export default {
         categoryID,
         namePT,
         nameEN,
+        codePT: ReplaceSpecialChars(namePT),
+        codeEN: ReplaceSpecialChars(nameEN),
         descriptionPT,
         descriptionEN,
         date,

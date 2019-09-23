@@ -1,7 +1,6 @@
 import { Schema, model, Document } from 'mongoose'
 
-interface WorkInterface extends Document {
-  categoryID: string;
+interface ProjectInterface extends Document {
   namePT: string;
   nameEN: string;
   codePT: string;
@@ -14,9 +13,8 @@ interface WorkInterface extends Document {
   icon: string;
 }
 
-export interface WorkModel {
+export interface ProjectModel {
   id?: string;
-  categoryID: string;
   namePT: string;
   nameEN: string;
   codePT: string;
@@ -29,11 +27,7 @@ export interface WorkModel {
   icon: string;
 }
 
-const WorkSchema = new Schema({
-  categoryID: {
-    type: String,
-    required: true
-  },
+const ProjectSchema = new Schema({
   namePT: {
     type: String,
     required: true
@@ -52,4 +46,4 @@ const WorkSchema = new Schema({
   icon: String
 })
 
-export default model<WorkInterface>('Work', WorkSchema)
+export default model<ProjectInterface>('Project', ProjectSchema)

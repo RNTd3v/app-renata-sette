@@ -3,15 +3,17 @@ import { MediaModel } from '../db/schemas/Media'
 export default {
   Query: {
     medias: (_, args, { models }): Promise<MediaModel[]> => models.Media.find(),
+    mediasByWork: (_, {workID}, { models }): Promise<MediaModel[]> => models.Media.find({workID}),
     media: (_, { id }, { models }): Promise<MediaModel> => models.Media.findById(id)
   },
   Mutation: {
-    createMedia: async (_, { workID, titlePT, titleEN, url }, { models }) : Promise<MediaModel> => {
+    createMedia: async (_, { workID, titlePT, titleEN, url, isMovie }, { models }) : Promise<MediaModel> => {
       // create a new media
       const newMedia = new models.Media({
         workID,
         titlePT,
         titleEN,
+        isMovie,
         url
       })
 
@@ -26,7 +28,7 @@ export default {
 
       return mediaRegistered
     },
-    updateMedia: async (_, { id, workID, titlePT, titleEN, url }, { models }): Promise<MediaModel> => {
+    updateMedia: async (_, { id, workID, titlePT, titleEN, url, isMovie }, { models }): Promise<MediaModel> => {
       const media = await models.Media.findById(id)
 
       if (!media) {
@@ -37,6 +39,7 @@ export default {
         workID,
         titlePT,
         titleEN,
+        isMovie,
         url
       }
 
