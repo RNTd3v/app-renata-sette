@@ -36,6 +36,7 @@ const isAuthenticated = rule()(async (parent, args, ctx) => {
 const permissions = shield({
   Query: {
     users: and(isAuthenticated),
+    categoriesAuth: and(isAuthenticated),
     categories: not(isAuthenticated)
   }
 })
