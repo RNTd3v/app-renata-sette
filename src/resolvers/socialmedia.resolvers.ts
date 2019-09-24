@@ -2,7 +2,8 @@ import { SocialMediaModel } from '../db/schemas/SocialMedia'
 
 export default {
   Query: {
-    socialMedia: (_, args, { models }): Promise<SocialMediaModel[]> => models.SocialMedia.find()
+    socialMedia: (_, args, { models }): Promise<SocialMediaModel[]> => models.SocialMedia.find(),
+    socialMediaAuth: (_, args, { models }): Promise<SocialMediaModel[]> => models.SocialMedia.find()
   },
   Mutation: {
     createSocialMedia: async (_, { name, icon, url }, { models }) : Promise<SocialMediaModel> => {
@@ -24,9 +25,11 @@ export default {
 
       return socialMediaRegistered
     },
-    updateSocialMedia: async (_, { id, name,
+    updateSocialMedia: async (_, {
+ id, name,
       icon,
-      url }, { models }): Promise<SocialMediaModel> => {
+      url 
+}, { models }): Promise<SocialMediaModel> => {
       const socialMedia = await models.SocialMedia.findById(id)
 
       if (!socialMedia) {

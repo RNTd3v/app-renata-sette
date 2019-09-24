@@ -10,6 +10,7 @@ type Media {
 type Query {
   medias: [Media!]!
   mediasByWork(workID: ID!): [Media!]!
+  mediasByWorkAuth(workID: ID!): [Media!]!
   media(id: ID!): Media
 }
 

@@ -5,9 +5,10 @@ export default {
   Query: {
     categories: (_, args, { models }): Promise<CategoryModel[]> => models.Category.find(),
     categoriesAuth: (_, args, { models }): Promise<CategoryModel[]> => models.Category.find(),
-    categoryByCodePT: (_, { codePT }, { models }): Promise<CategoryModel> => models.Category.findOne({codePT}),
-    categoryByCodeEN: (_, { codeEN }, { models }): Promise<CategoryModel> => models.Category.findOne({codeEN}),
-    category: (_, { id }, { models }): Promise<CategoryModel> => models.Category.findById(id)
+    categoryByCodePT: (_, { codePT }, { models }): Promise<CategoryModel> => models.Category.findOne({ codePT }),
+    categoryByCodeEN: (_, { codeEN }, { models }): Promise<CategoryModel> => models.Category.findOne({ codeEN }),
+    category: (_, { id }, { models }): Promise<CategoryModel> => models.Category.findById(id),
+    categoryAuth: (_, { id }, { models }): Promise<CategoryModel> => models.Category.findById(id)
   },
   Mutation: {
     createCategory: async (_, { namePT, nameEN, icon }, { models }) : Promise<CategoryModel> => {

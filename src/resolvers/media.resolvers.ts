@@ -3,7 +3,8 @@ import { MediaModel } from '../db/schemas/Media'
 export default {
   Query: {
     medias: (_, args, { models }): Promise<MediaModel[]> => models.Media.find(),
-    mediasByWork: (_, {workID}, { models }): Promise<MediaModel[]> => models.Media.find({workID}),
+    mediasByWork: (_, { workID }, { models }): Promise<MediaModel[]> => models.Media.find({ workID }),
+    mediasByWorkAuth: (_, { workID }, { models }): Promise<MediaModel[]> => models.Media.find({ workID }),
     media: (_, { id }, { models }): Promise<MediaModel> => models.Media.findById(id)
   },
   Mutation: {

@@ -15,6 +15,7 @@ type Contact {
 
 type Query {
   contacts: [Contact!]!
+  contactsAuth: [Contact!]!
   contact(id: ID!): Contact
 }
 

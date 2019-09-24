@@ -14,9 +14,11 @@ type Project {
 
 type Query {
   projects: [Project!]!
+  projectsAuth: [Project!]!
   projectByCodePT(codePT: String!): Project
   projectByCodeEN(codeEN: String!): Project
   project(id: ID!): Project
+  projectAuth(id: ID!): Project
 }
 
 type Mutation {

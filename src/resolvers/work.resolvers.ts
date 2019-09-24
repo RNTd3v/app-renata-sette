@@ -4,10 +4,13 @@ import ReplaceSpecialChars from '../utils/replaceSpecialChars'
 export default {
   Query: {
     works: (_, args, { models }): Promise<WorkModel[]> => models.Work.find(),
-    worksByCategory: (_, {categoryID}, { models }): Promise<WorkModel[]> => models.Work.find({categoryID}),
-    workByCodePT: (_, { codePT }, { models }): Promise<WorkModel> => models.Work.findOne({codePT}),
-    workByCodeEN: (_, { codeEN }, { models }): Promise<WorkModel> => models.Work.findOne({codeEN}),
+    worksByCategory: (_, { categoryID }, { models }): Promise<WorkModel[]> => models.Work.find({ categoryID }),
+    worksByCategoryAuth: (_, { categoryID }, { models }): Promise<WorkModel[]> => models.Work.find({ categoryID }),
+    workByCodePT: (_, { codePT }, { models }): Promise<WorkModel> => models.Work.findOne({ codePT }),
+    workByCodeEN: (_, { codeEN }, { models }): Promise<WorkModel> => models.Work.findOne({ codeEN }),
     work: (_, { id }, { models }): Promise<WorkModel> =>
+      models.Work.findById(id),
+    workAuth: (_, { id }, { models }): Promise<WorkModel> =>
       models.Work.findById(id)
   },
   Mutation: {

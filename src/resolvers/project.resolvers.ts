@@ -4,9 +4,12 @@ import ReplaceSpecialChars from '../utils/replaceSpecialChars'
 export default {
   Query: {
     projects: (_, args, { models }): Promise<ProjectModel[]> => models.Project.find(),
-    projectByCodePT: (_, { codePT }, { models }): Promise<ProjectModel> => models.Project.findOne({codePT}),
-    projectByCodeEN: (_, { codeEN }, { models }): Promise<ProjectModel> => models.Project.findOne({codeEN}),
+    projectsAuth: (_, args, { models }): Promise<ProjectModel[]> => models.Project.find(),
+    projectByCodePT: (_, { codePT }, { models }): Promise<ProjectModel> => models.Project.findOne({ codePT }),
+    projectByCodeEN: (_, { codeEN }, { models }): Promise<ProjectModel> => models.Project.findOne({ codeEN }),
     project: (_, { id }, { models }): Promise<ProjectModel> =>
+      models.Project.findById(id),
+    projectAuth: (_, { id }, { models }): Promise<ProjectModel> =>
       models.Project.findById(id)
   },
   Mutation: {

@@ -10,6 +10,7 @@ type Slider {
 
 type Query {
   slider: [Slider!]!
+  sliderAuth: [Slider!]!
 }
 
 type Mutation {

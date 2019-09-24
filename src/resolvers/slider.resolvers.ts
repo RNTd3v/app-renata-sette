@@ -2,16 +2,19 @@ import { SliderModel } from '../db/schemas/Slider'
 
 export default {
   Query: {
-    slider: (_, args, { models }): Promise<SliderModel[]> => models.Slider.find()
+    slider: (_, args, { models }): Promise<SliderModel[]> => models.Slider.find(),
+    sliderAuth: (_, args, { models }): Promise<SliderModel[]> => models.Slider.find()
   },
   Mutation: {
-    createSlider: async (_, { titlePT, titleEN, picture, linkPT,
-      linkEN }, { models }) : Promise<SliderModel> => {
+    createSlider: async (_, {
+      titlePT, titleEN, picture, linkPT,
+      linkEN
+    }, { models }) : Promise<SliderModel> => {
       // create a new slider
       const newSlider = new models.Slider({
         titlePT,
         titleEN,
-        picture, 
+        picture,
         linkPT,
         linkEN
       })
@@ -27,8 +30,10 @@ export default {
 
       return sliderRegistered
     },
-    updateSlider: async (_, { id, titlePT, titleEN, picture, linkPT,
-      linkEN }, { models }): Promise<SliderModel> => {
+    updateSlider: async (_, {
+      id, titlePT, titleEN, picture, linkPT,
+      linkEN
+    }, { models }): Promise<SliderModel> => {
       const slider = await models.Slider.findById(id)
 
       if (!slider) {
@@ -38,7 +43,7 @@ export default {
       const newSlider: SliderModel = {
         titlePT,
         titleEN,
-        picture, 
+        picture,
         linkPT,
         linkEN
       }
@@ -46,7 +51,7 @@ export default {
       await models.Slider.updateOne({ _id: id }, newSlider)
 
       const updateSlider = {
-        ... newSlider,
+        ...newSlider,
         id
       }
 

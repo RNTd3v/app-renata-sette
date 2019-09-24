@@ -3,6 +3,7 @@ import { BioModel } from '../db/schemas/Bio'
 export default {
   Query: {
     bios: (_, args, { models }): Promise<BioModel[]> => models.Bio.find(),
+    biosAuth: (_, args, { models }): Promise<BioModel[]> => models.Bio.find(),
     bio: (_, { id }, { models }): Promise<BioModel> => models.Bio.findById(id)
   },
   Mutation: {

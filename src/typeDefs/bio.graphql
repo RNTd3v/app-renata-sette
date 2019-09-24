@@ -8,6 +8,7 @@ type Bio {
 
 type Query {
   bios: [Bio!]!
+  biosAuth: [Bio!]!
   bio(id: ID!): Bio
 }
 

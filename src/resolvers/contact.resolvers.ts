@@ -1,9 +1,9 @@
 import { ContactModel } from '../db/schemas/Contact'
-import ReplaceSpecialChars from '../utils/replaceSpecialChars'
 
 export default {
   Query: {
     contacts: (_, args, { models }): Promise<ContactModel[]> => models.Contact.find(),
+    contactsAuth: (_, args, { models }): Promise<ContactModel[]> => models.Contact.find(),
     contact: (_, { id }, { models }): Promise<ContactModel> => models.Contact.findById(id)
   },
   Mutation: {
@@ -17,7 +17,8 @@ export default {
       district,
       city,
       state,
-      cep }, { models }) : Promise<ContactModel> => {
+      cep
+    }, { models }) : Promise<ContactModel> => {
       // create a new category
       const newContact = new models.Contact({
         phone,
@@ -43,24 +44,8 @@ export default {
 
       return contactRegistered
     },
-    updateContact: async (_, { id, phone,
-      cellPhone,
-      email,
-      email2,
-      street,
-      number,
-      district,
-      city,
-      state,
-      cep }, { models }): Promise<ContactModel> => {
-      const contact = await models.Contact.findById(id)
-
-      if (!contact) {
-        throw new Error('Contato não encontrado!')
-      }
-
-      const newContact: ContactModel = {
-        phone,
+    updateContact: async (_, {
+      id, phone,
       cellPhone,
       email,
       email2,
@@ -70,6 +55,24 @@ export default {
       city,
       state,
       cep
+    }, { models }): Promise<ContactModel> => {
+      const contact = await models.Contact.findById(id)
+
+      if (!contact) {
+        throw new Error('Contato não encontrado!')
+      }
+
+      const newContact: ContactModel = {
+        phone,
+        cellPhone,
+        email,
+        email2,
+        street,
+        number,
+        district,
+        city,
+        state,
+        cep
       }
 
       await models.Contact.updateOne({ _id: id }, newContact)

@@ -35,9 +35,26 @@ const isAuthenticated = rule()(async (parent, args, ctx) => {
 // Permissions
 const permissions = shield({
   Query: {
-    users: and(isAuthenticated),
+    biosAuth: and(isAuthenticated),
     categoriesAuth: and(isAuthenticated),
+    categoryAuth: and(isAuthenticated),
+    contactsAuth: and(isAuthenticated),
+    mediasByWorkAuth: and(isAuthenticated),
+    projectsAuth: and(isAuthenticated),
+    projectAuth: and(isAuthenticated),
+    sliderAuth: and(isAuthenticated),
+    socialMediaAuth: and(isAuthenticated),
+    uploads: and(isAuthenticated),
+    users: and(isAuthenticated),
+    user: and(isAuthenticated),
+    worksByCategoryAuth: and(isAuthenticated),
+    workAuth: and(isAuthenticated),
     categories: not(isAuthenticated)
+  },
+  Mutation: {
+    '*': and(isAuthenticated),
+    authenticate: not(isAuthenticated),
+    changePass: not(isAuthenticated)
   }
 })
 

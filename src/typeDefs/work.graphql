@@ -16,9 +16,11 @@ type Work {
 type Query {
   works: [Work!]!
   worksByCategory(categoryID: ID!): [Work!]!
+  worksByCategoryAuth(categoryID: ID!): [Work!]!
   workByCodePT(codePT: String!): Work
   workByCodeEN(codeEN: String!): Work
   work(id: ID!): Work
+  workAuth(id: ID!): Work
 }
 
 type Mutation {
