@@ -1,4 +1,6 @@
-import { createWriteStream } from 'fs'
+import { createWriteStream, existsSync, mkdirSync  } from 'fs';
+import path from "path";
+import { GraphQLUpload } from 'apollo-upload-server';
 import * as shortid from 'shortid'
 
 const storeUpload = async ({ stream, filename }): Promise<any> => {
@@ -21,13 +23,22 @@ const recordFile = file => {
 
 const processUpload = async (upload): Promise<any> => {
   const { createReadStream, filename, mimetype, encoding } = await upload
-  const stream = createReadStream()
+  console.log(upload)
+  /*const stream = createReadStream()
   const { id, path } = await storeUpload({ stream, filename })
-  return recordFile({ id, filename, mimetype, encoding, path })
+  return recordFile({ id, filename, mimetype, encoding, path })*/
+  return { path: ''}
 }
 
 export default {
+  Upload: GraphQLUpload,
   Mutation: {
-    singleUpload: (obj, { file }): Promise<any> => processUpload(file)
+    uploadFile: async (_, { file }) => {
+      const { stream, mimetype } = await file;
+      console.log("teste")
+      console.log(stream);
+
+      return { path: ''}
+    }
   }
 }

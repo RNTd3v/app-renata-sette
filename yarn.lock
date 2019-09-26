@@ -322,7 +322,7 @@ apollo-tracing@^0.1.0:
   dependencies:
     graphql-extensions "~0.0.9"
 
-apollo-upload-server@^7.0.0:
+apollo-upload-server@^7.0.0, apollo-upload-server@^7.1.0:
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/apollo-upload-server/-/apollo-upload-server-7.1.0.tgz#21e07b52252b3749b913468599813e13cfca805f"
   dependencies:
