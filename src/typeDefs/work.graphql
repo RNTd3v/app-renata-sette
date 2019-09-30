@@ -28,8 +28,6 @@ type Mutation {
     categoryID: String!
     namePT: String!
     nameEN: String!
-    codePT: String
-    codeEN: String
     descriptionPT: String
     descriptionEN: String
     date: String
@@ -42,8 +40,6 @@ type Mutation {
     categoryID: String!
     namePT: String!
     nameEN: String!
-    codePT: String
-    codeEN: String
     descriptionPT: String
     descriptionEN: String
     date: String
