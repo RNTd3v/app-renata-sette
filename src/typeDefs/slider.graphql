@@ -11,23 +11,24 @@ type Slider {
 type Query {
   slider: [Slider!]!
   sliderAuth: [Slider!]!
+  sliderAuthByID(id: ID!): Slider
 }
 
 type Mutation {
   createSlider(
-    linkPT: String
-    linkEN: String
     titlePT: String!
     titleEN: String!
     picture: String
+    linkPT: String
+    linkEN: String
   ): Slider
   updateSlider(
     id: ID!
-    linkPT: String
-    linkEN: String
     titlePT: String!
     titleEN: String!
     picture: String
+    linkPT: String
+    linkEN: String
   ): Slider
   deleteSlider(id: String!): Slider
 }

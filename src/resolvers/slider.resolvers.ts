@@ -3,7 +3,9 @@ import { SliderModel } from '../db/schemas/Slider'
 export default {
   Query: {
     slider: (_, args, { models }): Promise<SliderModel[]> => models.Slider.find(),
-    sliderAuth: (_, args, { models }): Promise<SliderModel[]> => models.Slider.find()
+    sliderAuth: (_, args, { models }): Promise<SliderModel[]> => models.Slider.find(),
+    sliderAuthByID: (_, { id }, { models }): Promise<SliderModel> =>
+      models.Slider.findById(id)
   },
   Mutation: {
     createSlider: async (_, {
