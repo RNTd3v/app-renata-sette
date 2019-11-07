@@ -1,0 +1,34 @@
+type Media {
+  id: ID!
+  workID: String
+  titlePT: String!
+  titleEN: String!
+  isMovie: Boolean
+  url: String!
+}
+
+type Query {
+  medias: [Media!]!
+  mediasByWork(workID: ID!): [Media!]!
+  mediasByWorkAuth(workID: ID!): [Media!]!
+  media(id: ID!): Media
+}
+
+type Mutation {
+  createMedia(
+    workID: String!
+    titlePT: String!
+    titleEN: String!
+    isMovie: Boolean
+    url: String!
+  ): Media
+  updateMedia(
+    id: String!
+    workID: String!
+    titlePT: String!
+    titleEN: String!
+    isMovie: Boolean
+    url: String!
+  ): Media
+  deleteMedia(id: String!): Media
+}

@@ -1,0 +1,34 @@
+type Slider {
+  id: ID!
+  linkPT: String
+  linkEN: String
+  titlePT: String!
+  titleEN: String!
+  picture: String
+  created: String
+}
+
+type Query {
+  slider: [Slider!]!
+  sliderAuth: [Slider!]!
+  sliderAuthByID(id: ID!): Slider
+}
+
+type Mutation {
+  createSlider(
+    titlePT: String!
+    titleEN: String!
+    picture: String
+    linkPT: String
+    linkEN: String
+  ): Slider
+  updateSlider(
+    id: ID!
+    titlePT: String!
+    titleEN: String!
+    picture: String
+    linkPT: String
+    linkEN: String
+  ): Slider
+  deleteSlider(id: String!): Slider
+}

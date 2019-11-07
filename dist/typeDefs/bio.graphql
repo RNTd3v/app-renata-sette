@@ -1,0 +1,19 @@
+type Bio {
+  id: ID!
+  titlePT: String!
+  titleEN: String!
+  contentPT: String
+  contentEN: String
+}
+
+type Query {
+  bios: [Bio!]!
+  biosAuth: [Bio!]!
+  bio(id: ID!): Bio
+}
+
+type Mutation {
+  createBio(titlePT: String!, titleEN: String!, contentPT: String, contentEN: String): Bio
+  updateBio(id: String!, titlePT: String!, titleEN: String!, contentPT: String, contentEN: String): Bio
+  deleteBio(id: String!): Bio
+}

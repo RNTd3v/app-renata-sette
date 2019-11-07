@@ -1,0 +1,51 @@
+type Project {
+  id: ID!
+  namePT: String!
+  nameEN: String!
+  codePT: String
+  codeEN: String
+  descriptionPT: String
+  descriptionEN: String
+  date: String
+  picture: String!
+  movie: String
+  icon: String
+}
+
+type Query {
+  projects: [Project!]!
+  projectsAuth: [Project!]!
+  projectByCodePT(codePT: String!): Project
+  projectByCodeEN(codeEN: String!): Project
+  project(id: ID!): Project
+  projectAuth(id: ID!): Project
+}
+
+type Mutation {
+  createProject(
+    namePT: String!
+    nameEN: String!
+    codePT: String
+    codeEN: String
+    descriptionPT: String
+    descriptionEN: String
+    date: String
+    picture: String!
+    movie: String
+    icon: String
+  ): Project
+  updateProject(
+    id: String!
+    namePT: String!
+    nameEN: String!
+    codePT: String
+    codeEN: String
+    descriptionPT: String
+    descriptionEN: String
+    date: String
+    picture: String!
+    movie: String
+    icon: String
+  ): Project
+  deleteProject(id: String!): Project
+}

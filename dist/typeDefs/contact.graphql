@@ -1,0 +1,49 @@
+type Contact {
+  id: ID!
+  phone: String
+  cellPhone: String
+  email: String
+  email2: String
+  street: String
+  number: String
+  district: String
+  city: String
+  state: String
+  cep: String
+  created: String
+}
+
+type Query {
+  contacts: [Contact!]!
+  contactsAuth: [Contact!]!
+  contact(id: ID!): Contact
+}
+
+type Mutation {
+  createContact(
+    phone: String
+    cellPhone: String
+    email: String
+    email2: String
+    street: String
+    number: String
+    district: String
+    city: String
+    state: String
+    cep: String
+  ): Contact
+  updateContact(
+    id: String!
+    phone: String
+    cellPhone: String
+    email: String
+    email2: String
+    street: String
+    number: String
+    district: String
+    city: String
+    state: String
+    cep: String
+  ): Contact
+  deleteContact(id: String!): Contact
+}
