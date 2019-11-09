@@ -25,7 +25,8 @@ export default {
         date,
         picture,
         movie,
-        icon
+        icon,
+        order_by
       },
       { models }
     ): Promise<WorkModel> => {
@@ -41,7 +42,8 @@ export default {
         date,
         picture,
         movie,
-        icon
+        icon,
+        order_by
       })
 
       let workRegistered
@@ -67,7 +69,8 @@ export default {
         date,
         picture,
         movie,
-        icon
+        icon,
+        order_by
       },
       { models }
     ): Promise<WorkModel> => {
@@ -88,13 +91,33 @@ export default {
         date,
         picture,
         movie,
-        icon
+        icon,
+        order_by
       }
 
       await models.Work.updateOne({ _id: id }, newWork)
 
       newWork.id = id
 
+      return newWork
+    },
+    updateOrderWork: async (
+      _,
+      {
+        id,
+        order_by
+      },
+      { models }
+    ): Promise<any> => {
+      const work = await models.Work.findById(id)
+      if (!work) {
+        throw new Error('Work não encontrada!')
+      }
+      await models.Work.updateOne({ _id: id }, {order_by})
+      const newWork = {
+        ...work,
+        order_by
+      }
       return newWork
     },
     deleteWork: async (_, { id }, { models }): Promise<WorkModel> => {

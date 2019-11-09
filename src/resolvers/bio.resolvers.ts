@@ -7,13 +7,14 @@ export default {
     bio: (_, { id }, { models }): Promise<BioModel> => models.Bio.findById(id)
   },
   Mutation: {
-    createBio: async (_, { titlePT, titleEN, contentPT, contentEN }, { models }) : Promise<BioModel> => {
+    createBio: async (_, { titlePT, titleEN, contentPT, contentEN, picture }, { models }) : Promise<BioModel> => {
       // create a new bio
       const newBio = new models.Bio({
         titlePT,
         titleEN,
         contentPT,
-        contentEN
+        contentEN,
+        picture
       })
 
       let bioRegistered
@@ -27,7 +28,7 @@ export default {
 
       return bioRegistered
     },
-    updateBio: async (_, { id, titlePT, titleEN, contentPT, contentEN }, { models }): Promise<BioModel> => {
+    updateBio: async (_, { id, titlePT, titleEN, contentPT, contentEN, picture }, { models }): Promise<BioModel> => {
       const bio = await models.Bio.findById(id)
 
       if (!bio) {
@@ -38,7 +39,8 @@ export default {
         titlePT,
         titleEN,
         contentPT,
-        contentEN
+        contentEN, 
+        picture
       }
 
       await models.Bio.updateOne({ _id: id }, newBio)

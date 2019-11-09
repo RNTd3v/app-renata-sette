@@ -5,6 +5,7 @@ interface BioInterface extends Document {
   titleEN: string;
   contentPT?: string;
   contentEN?: string;
+  picture?: string;
 }
 
 export interface BioModel {
@@ -13,6 +14,7 @@ export interface BioModel {
   titleEN: string;
   contentPT?: string;
   contentEN?: string;
+  picture?: string;
 }
 
 const BioSchema = new Schema({
@@ -25,7 +27,8 @@ const BioSchema = new Schema({
     required: true
   },
   contentPT: String,
-  contentEN: String
+  contentEN: String,
+  picture: String
 })
 
 export default model<BioInterface>('Bio', BioSchema)

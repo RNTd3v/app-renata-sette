@@ -1,3 +1,5 @@
+scalar Int
+
 type Work {
   id: ID!
   categoryID: String!
@@ -11,6 +13,7 @@ type Work {
   picture: String!
   movie: String
   icon: String
+  order_by: Float
 }
 
 type Query {
@@ -34,6 +37,7 @@ type Mutation {
     picture: String!
     movie: String
     icon: String
+    order_by: Float
   ): Work
   updateWork(
     id: String!
@@ -46,6 +50,8 @@ type Mutation {
     picture: String!
     movie: String
     icon: String
+    order_by: Float
   ): Work
+  updateOrderWork(id: String!, order_by: Float): Work
   deleteWork(id: String!): Work
 }

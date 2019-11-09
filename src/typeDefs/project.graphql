@@ -10,6 +10,7 @@ type Project {
   picture: String!
   movie: String
   icon: String
+  order_by: Float
 }
 
 type Query {
@@ -33,6 +34,7 @@ type Mutation {
     picture: String!
     movie: String
     icon: String
+    order_by: Float
   ): Project
   updateProject(
     id: String!
@@ -46,6 +48,8 @@ type Mutation {
     picture: String!
     movie: String
     icon: String
+    order_by: Float
   ): Project
+  updateOrderProject(id: String!, order_by: Float): Project
   deleteProject(id: String!): Project
 }

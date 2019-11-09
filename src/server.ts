@@ -58,7 +58,7 @@ const permissions = shield({
   }
 })
 
-const options = { port: 4004 }
+const options = { port: 40004 }
 
 const server = new GraphQLServer({
   typeDefs,

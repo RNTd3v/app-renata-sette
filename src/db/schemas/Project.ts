@@ -11,6 +11,7 @@ interface ProjectInterface extends Document {
   picture: string;
   movie: string;
   icon: string;
+  order_by?: number;
 }
 
 export interface ProjectModel {
@@ -25,6 +26,7 @@ export interface ProjectModel {
   picture: string;
   movie: string;
   icon: string;
+  order_by?: number;
 }
 
 const ProjectSchema = new Schema({
@@ -43,7 +45,8 @@ const ProjectSchema = new Schema({
   date: String,
   picture: String,
   movie: String,
-  icon: String
+  icon: String,
+  order_by: Number
 })
 
 export default model<ProjectInterface>('Project', ProjectSchema)

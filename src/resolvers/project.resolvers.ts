@@ -23,7 +23,8 @@ export default {
         date,
         picture,
         movie,
-        icon
+        icon,
+        order_by
       },
       { models }
     ): Promise<ProjectModel> => {
@@ -38,7 +39,8 @@ export default {
         date,
         picture,
         movie,
-        icon
+        icon,
+        order_by
       })
 
       let projectRegistered
@@ -63,7 +65,8 @@ export default {
         date,
         picture,
         movie,
-        icon
+        icon,
+        order_by
       },
       { models }
     ): Promise<ProjectModel> => {
@@ -83,13 +86,33 @@ export default {
         date,
         picture,
         movie,
-        icon
+        icon,
+        order_by
       }
 
       await models.Project.updateOne({ _id: id }, newProject)
 
       newProject.id = id
 
+      return newProject
+    },
+    updateOrderProject: async (
+      _,
+      {
+        id,
+        order_by
+      },
+      { models }
+    ): Promise<any> => {
+      const project = await models.Project.findById(id)
+      if (!project) {
+        throw new Error('Work não encontrada!')
+      }
+      await models.Project.updateOne({ _id: id }, {order_by})
+      const newProject = {
+        ...project,
+        order_by
+      }
       return newProject
     },
     deleteProject: async (_, { id }, { models }): Promise<ProjectModel> => {

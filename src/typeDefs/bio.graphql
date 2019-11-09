@@ -4,6 +4,7 @@ type Bio {
   titleEN: String!
   contentPT: String
   contentEN: String
+  picture: String
 }
 
 type Query {
@@ -13,7 +14,7 @@ type Query {
 }
 
 type Mutation {
-  createBio(titlePT: String!, titleEN: String!, contentPT: String, contentEN: String): Bio
-  updateBio(id: String!, titlePT: String!, titleEN: String!, contentPT: String, contentEN: String): Bio
+  createBio(titlePT: String!, titleEN: String!, contentPT: String, contentEN: String, picture: String): Bio
+  updateBio(id: String!, titlePT: String!, titleEN: String!, contentPT: String, contentEN: String, picture: String): Bio
   deleteBio(id: String!): Bio
 }

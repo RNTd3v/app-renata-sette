@@ -12,6 +12,7 @@ interface WorkInterface extends Document {
   picture: string;
   movie: string;
   icon: string;
+  order_by?: number;
 }
 
 export interface WorkModel {
@@ -27,6 +28,7 @@ export interface WorkModel {
   picture: string;
   movie: string;
   icon: string;
+  order_by?: number;
 }
 
 const WorkSchema = new Schema({
@@ -49,7 +51,8 @@ const WorkSchema = new Schema({
   date: String,
   picture: String,
   movie: String,
-  icon: String
+  icon: String,
+  order_by: Number
 })
 
 export default model<WorkInterface>('Work', WorkSchema)
