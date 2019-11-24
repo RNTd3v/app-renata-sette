@@ -103,10 +103,10 @@ export default {
         order_by
       },
       { models }
-    ): Promise<any> => {
+    ): Promise<ProjectModel> => {
       const project = await models.Project.findById(id)
       if (!project) {
-        throw new Error('Work não encontrada!')
+        throw new Error('Projeto não encontrada!')
       }
       await models.Project.updateOne({ _id: id }, {order_by})
       const newProject = {
